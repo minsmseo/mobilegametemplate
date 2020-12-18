@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
+    public static TouchManager instance;
     public List<GameObject> Effect;
     [SerializeField]
     private GameObject TouchEffects; //set toucheffect at unity engine
@@ -11,6 +12,14 @@ public class TouchManager : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Start()
     {
@@ -22,8 +31,9 @@ public class TouchManager : MonoBehaviour
     {
         if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
-            //Vector3 ScreenPosition =Input.mousePosition;
-            Vector3 ScreenPosition = Input.GetTouch(0).position;// 으로 해야함
+            Debug.Log("touched");
+            Vector3 ScreenPosition =Input.mousePosition; //for developing process
+            //Vector3 ScreenPosition = Input.GetTouch(0).position;// for build at android
 
             Vector3 StartPosition = Camera.main.ScreenToWorldPoint(new Vector3(ScreenPosition.x, ScreenPosition.y
                 , Camera.main.nearClipPlane));
@@ -44,7 +54,6 @@ public class TouchManager : MonoBehaviour
     }
     public GameObject TouchEffect()
     {
-        Debug.Log("here");
         for (int i = 0; i < Effect.Count; i++)
         {
             if (Effect[i].gameObject.activeInHierarchy == false)
