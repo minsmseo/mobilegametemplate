@@ -11,7 +11,7 @@ public class SaveDataController : MonoBehaviour
     private UserData user;
     
     protected void CreateUserData()
-    {
+    { 
         string name = "new user";
         //initailize userdata
         user = new UserData();
