@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     //Controller to Manage UI
     public static UIController instance;
+
+    [SerializeField]
+    private Button MenuButton;
+    [SerializeField]
+    private GameObject Menu;
     private void Awake()
     {
         if(instance==null)
@@ -20,12 +25,13 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OpenMenu()
     {
-        
+        Menu.gameObject.SetActive(true);
+    }
+    public void CloseMenu()
+    {
+        Menu.gameObject.SetActive(false);
     }
 }
