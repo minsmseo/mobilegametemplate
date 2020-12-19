@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private Button MenuButton;
+    private Button ExitButton;
     [SerializeField]
     private GameObject Menu;
     private void Awake()
@@ -33,5 +34,9 @@ public class UIController : MonoBehaviour
     public void CloseMenu()
     {
         Menu.gameObject.SetActive(false);
+    }
+    public void ExitProgram()
+    {
+        Application.Quit();
     }
 }
